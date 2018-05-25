@@ -20,7 +20,7 @@ $.add = async function(file){
 }
 
 $.commit = async function(message){
-    let ret = await util.promisify(childProcess.execFile)('git', ['commit', '--allow-empty', '-m', message]);
+    let ret = await util.promisify(childProcess.execFile)('git', ['commit', '--allow-empty-message', '-m', message]);
     console.log(ret);
 }
 
