@@ -29,14 +29,14 @@ async function readOldIps(){
     }
 }
 
-async function writeIp(name, Ip){
+async function writeIp(name, ip){
     try{
         let json = await readOldIps();
         if(json === undefined) json = {};
-        if(newIp === undefined)
+        if(ip === undefined)
             delete json[name];
         else
-            json[name] = Ip;
+            json[name] = ip;
         json = JSON.stringify(json, '', 4);
         await util.promisify(fs.writeFile)(IPS_JSON, json);
     }catch(err){
@@ -59,7 +59,7 @@ async function main(){
 
         try{
             await git.add(IPS_JSON);
-            await git.commit('nothing');
+            await git.commit('');
             await git.pushAll();
             console.log(`new IP ${newIp} has been committed`);
         } catch(err){
