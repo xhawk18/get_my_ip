@@ -66,8 +66,10 @@ async function writeMd(json) {
         return s.substr(0, len);
     }
     
-    let maxNameLen = 0;
-    let maxIpLen = 0;
+    let NMAE = ":arrow_forward:";
+    let IP = ":house_with_garden:";
+    let maxNameLen = NMAE.length;
+    let maxIpLen = IP.length;
     for(let name in json) {
         let ip = json[name];
         if(maxNameLen < name.length)
@@ -76,7 +78,7 @@ async function writeMd(json) {
             maxIpLen = ip.length;
     }
 
-    var md = `|${pad(""," ",maxNameLen)}|${pad(""," ",maxIpLen)}|\n`;
+    var md = `|${pad(NMAE," ",maxNameLen)}|${pad(IP," ",maxIpLen)}|\n`;
     md += `|${pad("","-",maxNameLen)}|${pad("","-",maxIpLen)}|\n`;
     for(let name in json) {
         let ip = json[name];
